@@ -5,7 +5,6 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.text :description
       t.string :location
       t.integer :maximum_participants
-      t.string :time_slot
 
       t.timestamps
     end
