@@ -1,18 +1,6 @@
 <h1>Add a Course</h1>
+
     <%= form_for(@course) do |f| %>
- 
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= render 'form' %>
+    <% end %>
 
-        <%= f.label :description %><br>
-        <%= f.text_area :description %>
-
-        <%= f.label :location %><br>
-        <%= f.collection_select :location %>
-
-        <%= f.label :maximum_participants %><br>
-        <%= f.text_field :maximum_participants %>
-
-        <%= f.submit %>
-        
-    <<% end %>

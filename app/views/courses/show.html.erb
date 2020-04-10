@@ -2,3 +2,6 @@
 <i><%= @course.location %></i>
 <p><%= @course.description %></p>
 Maximum Participants: <%= @course.maximum_participants%>
+<br><br>
+<%= button_to "Edit Course", edit_course_path(@course) %>
+<%= button_to "Delete Course", @course, method: :delete %>

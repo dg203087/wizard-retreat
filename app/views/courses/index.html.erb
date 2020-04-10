@@ -1,6 +1,10 @@
-<h1>Courses</h1>
+<h1>All Courses</h1>
+
+<%= button_to "Add Course", new_course_path%>
 
 <% @courses.each do |course| %>
-    <h2><%= link_to course.name, course_path(course)%></h2><br>
-<% end %>
+    <h2><%= link_to course.name, course_path(course)%></h2>
+    <%= button_to "Edit Course", edit_course_path(course) %>
+    <%= button_to "Delete Course", course, method: :delete %>
 
+<% end %>
