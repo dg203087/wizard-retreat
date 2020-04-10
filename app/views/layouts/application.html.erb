@@ -13,6 +13,7 @@
     body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
     header {background-image: "/app/images/fall.jpg"}
+    #alert {color: red}
   </style>
 <body>
 
@@ -21,10 +22,13 @@
   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="/signup" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
-    <a href="/signin" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign In</a>
-    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Out</a>
-    <a href="/courses" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Courses</a>
+    <% if !current_wizard %>
+      <a href="/wizards/new" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
+      <a href="/signin" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign In</a>
+    <% else %>
+      <a href="/courses" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Courses</a>
+      <a href="/signout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Out</a>
+    <% end %>
   </div>
 
   <!-- Navbar on small screens -->
