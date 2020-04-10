@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'site#home'
+  resources :wizards, only: [:new, :create, :show]
+  resources :courses
+
+
+  # get '/signup', to: 'wizards#new', as: "signup"
+  # post '/signup', to: 'wizards#create'
+  get '/signin', to: 'sessions#new', as: "signin"
+  post '/signin', to: 'sessions#create'
+  get '/signout', to: 'sessions#destroy'
+
 end
