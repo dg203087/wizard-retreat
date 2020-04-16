@@ -1,11 +1,25 @@
 <h1>Greetings, <%= @wizard.first_name %></h1>
-<% if @wizard.admin %>
-    <h4>Retreat Admin</h4>
+<% if admin_only %>
+    <i><h6>Retreat Admin</h6></i><br>
+<% end %>
+Email: <%= @wizard.email %> <br />
+Full Name: <%= @wizard.first_name + " " + @wizard.last_name%> <br />
+House (Click to see your housemates!): <%= link_to @wizard.house, wizards_path %><br /><br />
+
+<% if current_wizard %>
+    <%= link_to "Edit Profile", edit_wizard_path(@wizard) %><br />
 <% end %>
 
-<!-- Add Edit Wizard/Delete Wizard Routes/Forms
-<% if current_wizard %>
-    <h4>link_to </h4>
-<% end %>>
--->
+<%= link_to "Register for Courses", courses_path %>
+
+<!-- put these in order by time? -->
+<h1>Current Courses</h1> 
+<% @wizard.courses.each do |course| %>
+    <h3><%= link_to course.name, course_path(course) %></h3>
+    Location: <%= course.location %><br />
+    Time Slot: <%= course.registrations.where(wizard_id: @wizard.id) %><br /> <!-- to be fixed -->
+
+    <%= link_to "Edit Registration", edit_course_registration_path(course) %><br>
+    <%= button_to "Cancel Registration", @registration.wizard, method: :delete %><br> 
+<% end %>
 
