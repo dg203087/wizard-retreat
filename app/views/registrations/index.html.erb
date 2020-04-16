@@ -1,0 +1,8 @@
+<h1>All Wizards Registered for <%= @course.name %>  </h1>
+
+<ul>
+    <% @course.registrations.each do |c| %>
+        <li><%= c.wizard.full_name %></li>
+    <% end %>
+<ul>
+

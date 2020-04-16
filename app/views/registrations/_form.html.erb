@@ -1,0 +1,7 @@
+<%= form_for @registration do |f| %>
+  <%= f.hidden_field :course_id %>
+  <h3>Select a time slot:</h3>
+  <%= f.select :time_slot, [['Saturday AM'], ['Saturday PM'], ['Sunday AM']] %><br /><br />
+ 
+  <%= f.submit %>
+<% end %>
