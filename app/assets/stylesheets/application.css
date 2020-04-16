@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
- */
+
+
+ @import "bootstrap";
+
+ body {
+    background-image:url('/images/fall.jpg');
+ }
+ 
+ a {
+   color: #449896;
+ }
+  */

@@ -26,6 +26,7 @@
       <a href="/wizards/new" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
       <a href="/signin" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign In</a>
     <% else %>
+      <div class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> <%= link_to "My Profile", wizard_path(current_wizard) %> </div>
       <a href="/courses" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Courses</a>
       <a href="/signout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Out</a>
     <% end %>
