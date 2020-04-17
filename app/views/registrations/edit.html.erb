@@ -1,5 +1,9 @@
 <h1>Edit <%= @course.name %> Registration</h1>
 
-    <%= form_for(@registration) do |f| %>
-        <%= render 'form' %>
-    <% end %>
+<%= form_for @registration do |f| %>
+  <%= f.hidden_field :wizard_id %>
+  <h3>Preferred time slot:</h3>
+  <%= f.select :time_slot, [['Saturday AM'], ['Saturday PM'], ['Sunday AM']] %><br /><br />
+ 
+  <%= f.submit %>
+<% end %>

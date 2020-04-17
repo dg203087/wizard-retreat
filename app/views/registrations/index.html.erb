@@ -1,8 +1,18 @@
-<h1>All Wizards Registered for <%= @course.name %>  </h1>
+<h1>All Registrations for <%= @wizard.full_name %> </h1>
 
-<ul>
-    <% @course.registrations.each do |c| %>
-        <li><%= c.wizard.full_name %></li>
+<% current_wizard.registrations.each do |reg| %> 
+    <h4><%= link_to reg.course.name, course_path(reg.course) %></h4>
+    Location: <%= reg.course.location %><br />
+    Time Slot: <%= reg.time_slot %><br />
+
+    <button class="button"><%= link_to "Edit Registration", edit_course_registration_path(reg.course, reg) %></button><br>
+    
+    <%= form_tag(course_registration_path(reg.course, reg), :method => :delete) do %>
+        <button type="submit" class="destroy">Cancel Registration</button> 
     <% end %>
-<ul>
+
+<% end %>
+
+
+
 
