@@ -15,12 +15,9 @@ class ApplicationController < ActionController::Base
     end
 
     def admin_only
-        if current_wizard.admin
-            true
-        else
-            false
-        end
-        # flash[:notice] = "You must be an admin to perform that function!"
-        # redirect_to wizard_path(current_wizard)
+        # unless current_wizard.admin
+        #     flash[:notice] = "You must be an admin to perform that function."
+        # end
+        current_wizard.admin 
     end
 end
