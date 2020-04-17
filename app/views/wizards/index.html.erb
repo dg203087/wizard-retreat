@@ -1,8 +1,9 @@
 <h1><%= current_wizard.house %> Retreat Attendees</h1>
 
-<% @wizards.each do |wizard| %>
-    <%= wizard.full_name %> - <%= wizard.email %><br>
-    <%= wizard.house %><br><br>
-<% end%>
+
+    <% @wizards.each do |wizard| %>
+        <%= wizard.full_name %> - <%= wizard.email %><br>
+    <% end%>
+
 
 

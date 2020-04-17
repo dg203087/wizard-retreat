@@ -1,20 +1,4 @@
 <h1>Edit Profile</h1>
 
-<%= form_for(@wizard) do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %><br><br>
+    <%= render 'form' %>
 
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %><br><br>
-
-    <%= f.label :Last_name %>
-    <%= f.text_field :last_name %><br><br>
-
-    <%= f.label :house %>
-    <%= f.text_field :house %><br><br>
-
-    <p>Admin? <%= f.check_box :admin, options = {:class => "wizard_admin"} %></p>
-    <br>
-
-    <%= f.submit "Save Changes" %>
-<% end %>
