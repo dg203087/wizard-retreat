@@ -1,4 +1,10 @@
     <%= form_for @course do |f| %>
+
+        <% if flash[:alert] %>
+            <p><div id="alert">
+                <%= flash[:alert] %> 
+            </div></p>
+        <% end %>
  
         <%= f.label :name %>
         <%= f.text_field :name %><br /><br />
@@ -7,11 +13,11 @@
         <%= f.text_area :description %><br /><br />
 
         <%= f.label :location %>
-        <%= f.select :location, [['Great Hall'], ['Dungeons'], ['Common Room'], ['Library'], ['Loft'], ['Astronomy Tower']]%><br /><br />
+        <%= f.select :location, [['Great Hall'], ['Dungeons'], ['Common Room'], ['Library'], ['Loft'], ['Astronomy Tower'], ["Quiddith Pitch"]]%><br /><br />
 
         <%= f.label :maximum_participants %>
         <%= f.number_field :maximum_participants %><br /><br />
 
-        <%= f.submit %>
+        <%= f.submit nil, class: "button"%>
         
     <% end %>
