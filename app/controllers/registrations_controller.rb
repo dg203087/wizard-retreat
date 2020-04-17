@@ -1,10 +1,12 @@
 class RegistrationsController < ApplicationController
-    before_action :find_registration, only: [:edit, :update]
+    before_action :require_login
+    before_action :find_registration, only: [:show, :edit, :destroy]
 
     def index
-        @course = Course.find(params[:course_id])
-        if params[:course_id]
-            @registrations = Course.find_by(params[:course_id]).registrations
+        @wizard = Wizard.find(params[:wizard_id])
+        # @course = Course.find(params[:course_id])
+        if params[:wizard_id]
+            @registrations = Wizard.find_by(params[:wizard_id]).registrations
         else
             @registrations = Registration.all
         end
@@ -16,8 +18,6 @@ class RegistrationsController < ApplicationController
     end
 
     def create
-        # if Registration.not_more_than_three
-            # registration = Registration.create(registration_params)
         registration = current_wizard.registrations.build(registration_params)
 
         if registration.save
@@ -28,30 +28,24 @@ class RegistrationsController < ApplicationController
         end
     end
 
+    def show
+        @wizard = Wizard.find_by_id(params[:wizard_id])
+    end
+
     def edit
         @course = Course.find_by_id(params[:course_id])
     end
 
     def update
+        binding.pry
         @registration.update(registration_params)
         redirect_to wizard_path(@registration.wizard)
+        # redirect_to course_registrations_path(@wizard.course, @course.registrations)
     end
   
     def destroy
-        # @registration = current_wizard.registrations.find_by_id(params[:id])
-        @registration = current_wizard.registrations.find_by_id(params[:id])
-            if @registration
-                @registration.destroy
-                flash[:message] = "Registration Cancelled"
-                redirect_to wizard_path(current_wizard)
-            else
-                redirect_to "/"
-            end
-
-        # binding.pry
-        # @registration.destroy
-        # # flash[:message] = "Registration Cancelled"
-        # redirect_to wizard_path(@registration.wizard)
+        @registration.destroy
+        redirect_to wizard_path(@registration.wizard)
     end
 
     private
@@ -61,7 +55,7 @@ class RegistrationsController < ApplicationController
     end
 
     def find_registration
-        @registration = Registration.find_by_id(params[:id])
+        @registration = Registration.find(params[:id])
     end
 
 end
