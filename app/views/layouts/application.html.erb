@@ -6,20 +6,66 @@
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat">  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-    header {background-image: "/app/images/fall.jpg"}
+    header, h1 {
+      font-family: "Caveat", cursive;
+      background-image: "assets/images/hp_halloween.jpg"
+      }
+    .w3-bar,button {font-family: "Montserrat", sans-serif}
     #alert {color: red}
+    .button {
+      background-color: #FFD700;
+      border: none;
+      color: black;
+      padding: 5px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-family: "Montserrat", sans-serif;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+      .destroy {
+      background-color: #FFD700;
+      border: none;
+      color: black;
+      padding: 5px 15px;
+      text-align: center;
+      text-decoration: underline;
+      display: inline-block;
+      font-family: "Montserrat", sans-serif;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 25%;
+      padding: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
   </style>
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+  <div class="w3-bar w3-amber w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
     <% if !current_wizard %>
@@ -42,12 +88,17 @@
 </div>
 
 <!-- Header -->
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+<header class="w3-container w3-deep-orange w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">Wizard Retreat Weekend</h1>
   <p class="w3-xlarge">October 24-26, 2021</p>
 </header>
 
-<%= yield %>
+<!-- Padding for THE BODY -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <%= yield %>
+  </div>
+</div>
 
 <!-- Bottom Line 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
