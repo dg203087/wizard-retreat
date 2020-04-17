@@ -1,12 +1,18 @@
 class CoursesController < ApplicationController
   before_action :find_course, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  # before_action :admin_only, except: [:index, :show]
   
   def index
     @courses = Course.all
   end
 
   def new
-    @course = Course.new
+    if admin_only
+      @course = Course.new
+    else
+      redirect_to courses_path
+    end
   end
 
   def create
@@ -19,6 +25,11 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    if admin_only
+      find_course
+    else
+      redirect_to course_path(@course)
+    end
   end
 
   def update
@@ -27,8 +38,10 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    @course.destroy
-    redirect_to courses_path
+    if admin_only
+      @course.destroy
+    end
+      redirect_to courses_path
   end
 
   private
