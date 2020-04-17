@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    #@wizard = Wizard.new #whyyy?
   end
 
   def create
