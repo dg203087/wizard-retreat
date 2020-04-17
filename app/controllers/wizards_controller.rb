@@ -1,7 +1,6 @@
 class WizardsController < ApplicationController
   before_action :require_login, except: [:new, :create]
-  before_action :find_wizard, only: [:show, :edit, :update]
-  # helper_method :params
+  before_action :find_wizard, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:house] = "Gryffindor"
@@ -38,13 +37,24 @@ class WizardsController < ApplicationController
   end
 
   def update
+    # if @wizard.update(wizard_params)
+    #     redirect_to wizard_path(@wizard)
+    # else
+    #     render :edit
+    # end
+    binding.pry
 	  @wizard = Wizard.update(wizard_params)
 	  redirect_to wizard_path(@wizard)
   end
 
+  def destroy
+    @wizard.destroy
+    redirect_to root_path
+  end
+
   private
   def wizard_params
-    params.require(:wizard).permit(:email, :password, :first_name, :last_name, :house, :admin, :uid)
+    params.require(:wizard).permit(:email, :password, :password_confirmation, :first_name, :last_name, :house, :admin, :uid)
   end
 
   def find_wizard
