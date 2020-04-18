@@ -1,5 +1,6 @@
 class WizardsController < ApplicationController
   before_action :require_login, except: [:new, :create]
+  before_action :this_wizard_only, only: [:show, :edit, :update, :destroy]
   before_action :find_wizard, only: [:show, :edit, :destroy]
 
   def index
@@ -22,10 +23,11 @@ class WizardsController < ApplicationController
 
   def create
     @wizard = Wizard.create(wizard_params)
-    if @wizard.valid?
+    if @wizard.save
       session[:wizard_id] = @wizard.id
       redirect_to wizard_path(@wizard)
     else
+      flash[:message] = "Invalid entry, please try again."
       render :new
     end
   end
@@ -37,11 +39,6 @@ class WizardsController < ApplicationController
   end
 
   def update
-    # if @wizard.update(wizard_params)
-    #     redirect_to wizard_path(@wizard)
-    # else
-    #     render :edit
-    # end
 	  @wizard = Wizard.update(wizard_params)
 	  redirect_to wizard_path(current_wizard)
   end
@@ -59,4 +56,11 @@ class WizardsController < ApplicationController
   def find_wizard
     @wizard = Wizard.find(params[:id])
   end
+
+  def this_wizard_only
+    if find_wizard != current_wizard
+        redirect_to wizard_path(current_wizard)
+    end
+  end
+  
 end
