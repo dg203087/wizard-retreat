@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   
   resources :wizards
   resources :courses
-  resources :registrations, only: [:new, :create, :destroy] #do I need this route?
+  resources :registrations, only: [:new, :create, :edit, :update, :destroy]
 
   
   resources :courses do 
-    resources :registrations
+    resources :registrations, only: [:new, :create, :edit, :update, :destroy]
   end 
 
   resources :wizards, only: [:index] do 
