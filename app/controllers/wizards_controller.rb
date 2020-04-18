@@ -1,6 +1,6 @@
 class WizardsController < ApplicationController
   before_action :require_login, except: [:new, :create]
-  before_action :find_wizard, only: [:show, :edit, :update, :destroy]
+  before_action :find_wizard, only: [:show, :edit, :destroy]
 
   def index
     if params[:house] = "Gryffindor"
@@ -42,9 +42,8 @@ class WizardsController < ApplicationController
     # else
     #     render :edit
     # end
-    binding.pry
 	  @wizard = Wizard.update(wizard_params)
-	  redirect_to wizard_path(@wizard)
+	  redirect_to wizard_path(current_wizard)
   end
 
   def destroy
