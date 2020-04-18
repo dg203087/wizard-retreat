@@ -9,7 +9,7 @@
 <b>House (Click to see your housemates!): </b><%= link_to @wizard.house, wizards_path %><br /><br />
 
 <% if current_wizard %>
-    <button class="button" ><%= link_to "Edit Profile", edit_wizard_path(@wizard) %></button><br /><!-- to be fixed -->
+    <button class="button" ><%= link_to "Edit Profile", edit_wizard_path(@wizard) %></button><br />
 
     <%= form_tag(wizard_path(@wizard), :method => :delete) do %>
         <button type="submit" class="destroy">Delete Profile</button> 
@@ -17,16 +17,10 @@
 
 <% end %>
 
-<h1>My Course Schedule</h1> 
+<h1>My Courses</h1> 
 <button class="button"><%= link_to "Register for Courses", courses_path %></button><br>
-<button class="button" ><%= link_to "Edit/Cancel Existing Registrations", wizard_registrations_path(@wizard.id, @registrations) %></button><br><!-- to be fixed -->
+<button class="button" ><%= link_to "View/Edit/Cancel Existing Registrations", wizard_registrations_path(@wizard.id, @registrations) %></button><br><!-- to be fixed -->
 
 <% @wizard.courses.each do |course| %> 
     <h4><%= link_to course.name, course_path(course) %></h4>
-    Location: <%= course.location %><br />
-
-    <% current_wizard.registrations.each do |reg| %>
-        Time Slot: <%= reg.time_slot %><br />
-    <% end %>
-
 <% end %>
