@@ -1,10 +1,10 @@
 class RegistrationsController < ApplicationController
     before_action :require_login
-    before_action :find_registration, only: [:show, :edit, :destroy]
+    before_action :find_registration, only: [:show, :edit, :update, :destroy]
 
     def index
         @wizard = Wizard.find(params[:wizard_id])
-        # @course = Course.find(params[:course_id])
+        
         if params[:wizard_id]
             @registrations = Wizard.find_by(params[:wizard_id]).registrations
         else
@@ -37,15 +37,13 @@ class RegistrationsController < ApplicationController
     end
 
     def update
-        binding.pry
         @registration.update(registration_params)
-        redirect_to wizard_path(@registration.wizard)
-        # redirect_to course_registrations_path(@wizard.course, @course.registrations)
+        redirect_to wizard_registrations_path(@registration.wizard, @registrations)
     end
   
     def destroy
         @registration.destroy
-        redirect_to wizard_path(@registration.wizard)
+        redirect_to wizard_registrations_path(@registration.wizard, @registrations)
     end
 
     private
