@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_action :find_course, only: [:show, :edit, :update, :destroy]
   before_action :require_login
-  # before_action :admin_only, except: [:index, :show]
   
   def index
     @courses = Course.all
@@ -47,7 +46,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name, :description, :location, :maximum_participants, :course_time)
+    params.require(:course).permit(:name, :description, :location, :maximum_participants)
   end
 
   def find_course
