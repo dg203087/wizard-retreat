@@ -16,8 +16,12 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-		@course.save
-		redirect_to course_path(@course)
+		if @course.save
+      redirect_to course_path(@course)
+    else
+      flash[:alert] = "Invalid course info, please try again."
+      render :new
+    end
   end
 
   def show

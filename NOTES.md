@@ -112,3 +112,20 @@ Registrations controller
     <%= submit_tag "Filter" %>
   <% end %>
 
+
+<h1>All Wizards Registered for <%= @course.name %>  </h1>
+
+<ul>
+    <% @course.registrations.each do |c| %>
+        <li><%= c.wizard.full_name %></li>
+    <% end %>
+<ul>
+
+    <% course.registrations.belongs_to_user %>
+            Time Slot: <%= reg.time_slot %><br />
+    <% end %>
+
+
+        <% course.registrations.each do |reg| %>
+        Time Slot: <%= reg.time_slot.belongs_to_wizard %><br />
+    <% end %>

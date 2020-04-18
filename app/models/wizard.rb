@@ -3,9 +3,9 @@ class Wizard < ApplicationRecord
     has_many :registrations
     has_many :courses, through: :registrations
 
-    validates :email, uniqueness: true, presence: true, format: {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, uniqueness: {message:"already belongs to an existing account"}
-    validates :password, uniqueness: true, length: {in: 6..20}, presence: true
-    validates_presence_of :first_name, :last_name, format: { with: /\A[a-zA-Z]+\Z/ }, message:"Name cannot be blank"
+    validates :email, uniqueness: true, presence: true, format: {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+    validates :password, length: {in: 5..20}, presence: true
+    validates_presence_of :first_name, :last_name, format: { with: /\A[a-zA-Z]+\Z/ }
    
     def full_name
         full_name = [first_name, last_name].join(' ')
