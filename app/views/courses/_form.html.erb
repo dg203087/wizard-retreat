@@ -1,8 +1,8 @@
     <%= form_for @course do |f| %>
 
-        <% if flash[:alert] %>
+        <% if flash[:message] %>
             <p><div id="alert">
-                <%= flash[:alert] %> 
+                <%= flash[:message] %> 
             </div></p>
         <% end %>
  
