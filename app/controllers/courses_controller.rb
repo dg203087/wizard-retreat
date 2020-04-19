@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
 		if @course.save
       redirect_to course_path(@course)
     else
-      flash[:alert] = "Invalid course info, please try again."
+      flash[:message] = "Invalid course info, please try again."
       render :new
     end
   end
