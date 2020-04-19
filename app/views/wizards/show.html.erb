@@ -19,7 +19,7 @@
 
 <h1>My Courses</h1> 
 <button class="button"><%= link_to "Register for Courses", courses_path %></button><br>
-<button class="button" ><%= link_to "View/Edit/Cancel Existing Registrations", wizard_registrations_path(@wizard.id, @registrations) %></button><br><!-- to be fixed -->
+<button class="button" ><%= link_to "View/Edit/Cancel Existing Registrations", wizard_registrations_path(@wizard.id, @registrations) %></button><br>
 
 <% @wizard.courses.each do |course| %> 
     <h4><%= link_to course.name, course_path(course) %></h4>
