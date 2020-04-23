@@ -27,7 +27,6 @@ class WizardsController < ApplicationController
       session[:wizard_id] = @wizard.id
       redirect_to wizard_path(@wizard)
     else
-      flash[:message] = "Invalid entry, please try again."
       render :new
     end
   end
