@@ -1,12 +1,13 @@
+    <% if @course.errors %>
+        <% @course.errors.full_messages.each do |error| %>
+            <p style="color: red"><%= error %></p>
+        <% end%>
+    <% end %>
+    
+
     <%= form_for @course do |f| %>
 
-        <% if flash[:message] %>
-            <p><div id="alert">
-                <%= flash[:message] %> 
-            </div></p>
-        <% end %>
- 
-        <%= f.label :name %>
+         <%= f.label :name %>
         <%= f.text_field :name %><br /><br />
 
         <%= f.label :description %>
