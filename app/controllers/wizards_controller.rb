@@ -4,14 +4,15 @@ class WizardsController < ApplicationController
   before_action :find_wizard, only: [:show, :edit, :destroy]
 
   def index
-    if params[:house] = "Gryffindor"
-      @wizards = Wizard.griffindor
-    elsif params[:house] = "Slytherin"
+   case current_wizard.house
+    when "Gryffindor"
+      @wizards = Wizard.gryffindor
+    when "Slytherin"
       @wizards = Wizard.slytherin
-    elsif params[:house] = "Ravenclaw" 
-      @wizards = Wizard.ravenclaw
-    elsif params[:house] = "Hufflepuff"
+    when "Hufflepuff"
       @wizards = Wizard.hufflepuff
+    when "Ravenclaw"
+      @wizards = Wizard.ravenclaw 
     else
       @wizards = Wizard.all
     end
