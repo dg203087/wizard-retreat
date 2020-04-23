@@ -1,10 +1,10 @@
-<%= form_for(@wizard) do |f| %>
+<% if @wizard.errors %>
+    <% @wizard.errors.full_messages.each do |error| %>
+        <p style="color: red"><%= error %></p>
+    <% end%>
+<% end %>
 
-    <% if flash[:alert] %>
-        <p><div id="alert">
-            <%= flash[:alert] %> 
-        </div></p>
-    <% end %>
+<%= form_for(@wizard) do |f| %>
 
     <%= f.label :email %>
     <%= f.text_field :email %><br><br>
