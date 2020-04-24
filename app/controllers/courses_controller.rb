@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :require_login
   
   def index
-    @courses = Course.all
+    @courses = Course.search(params[:search])
   end
 
   def new
