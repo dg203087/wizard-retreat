@@ -13,12 +13,11 @@ class Course < ApplicationRecord
         @course = self.wizards.size
     end
 
-    # def self.alphabetize 
-    #     order(:name)
-    # end
-
-    # def self.space?
-    #     currently_enrolled + 1 <= maximum_participants
-    # end
-
+    def self.search(search_name)
+        if search_name
+            self.where(" name LIKE ?", "%#{search_name}%")
+        else
+            @courses = Course.all
+        end 
+    end
 end
